@@ -1,0 +1,37 @@
+{% extends 'opal.html' %}
+
+{% load opalplugins %}
+{% load dashboards %}
+
+{% block ngapp %}opal.dashboard{% endblock %}
+{% block angularapp %}
+  {% plugin_javascripts 'opal.dashboard' %}
+{% endblock %}
+
+{% block content %}
+<div class="container content-offset">
+  <div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <h2>
+        <i class="fa fa-dashboard"></i>
+        {{ dashboard.name }}
+      </h2>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="lead">{{ dashboard.description }}</p>
+        </div> 
+
+      </div>
+      <div class="row">
+        {% for widget in dashboard.get_widgets %}
+          {% dashboard_widget widget %}      
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
