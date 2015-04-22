@@ -3,7 +3,7 @@ Views for the dashboard OPAL Plugin
 """
 from django.views.generic import View, TemplateView
 
-from opal.utils.views import LoginRequiredMixin, _build_json_response
+from opal.core.views import LoginRequiredMixin, _build_json_response
 
 class DashboardIndexView(LoginRequiredMixin, TemplateView):
     """
