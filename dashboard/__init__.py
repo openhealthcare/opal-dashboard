@@ -3,7 +3,8 @@ Plugin definition for the dashboard OPAL plugin
 """
 from django.conf import settings
 
-from opal.utils import OpalPlugin, stringport, camelcase_to_underscore
+from opal.core.plugins import OpalPlugin
+from opal.utils import stringport, camelcase_to_underscore
 
 import dashboard.widgets as widgets
 from dashboard.urls import urlpatterns
