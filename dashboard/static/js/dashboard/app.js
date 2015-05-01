@@ -19,25 +19,7 @@ var app = OPAL.module('opal.dashboard', [
     'opal.controllers',
     'opal.dashboard.controllers'
 ]);
-
-app.run(['$rootScope', 'ngProgressLite', function($rootScope, ngProgressLite) {
-    // When route started to change.
-    $rootScope.$on('$routeChangeStart', function() {
-        ngProgressLite.set(0);
-        ngProgressLite.start();
-    });
-
-    // When route successfully changed.
-    $rootScope.$on('$routeChangeSuccess', function() {
-        ngProgressLite.done();
-    });
-
-    // When some error occured.
-    $rootScope.$on('$routeChangeError', function() {
-        ngProgressLite.set(0);
-    });
-}]);
-
+OPAL.run(app);
 
 app.directive('lineChart', function($http){
     return function(scope, element, attrs){
