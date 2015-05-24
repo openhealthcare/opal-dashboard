@@ -3,7 +3,7 @@ Plugin definition for the dashboard OPAL plugin
 """
 from django.conf import settings
 
-from opal.core.plugins import OpalPlugin
+from opal.core import plugins
 from opal.utils import stringport, camelcase_to_underscore
 
 import dashboard.widgets as widgets
@@ -28,7 +28,7 @@ def import_from_apps():
     IMPORTED_FROM_APPS = True
     return
 
-class DashboardPlugin(OpalPlugin):
+class DashboardPlugin(plugins.OpalPlugin):
     """
     Main entrypoint to expose this plugin to our OPAL application.
     """
@@ -74,6 +74,8 @@ class DashboardPlugin(OpalPlugin):
         """
         return {}
 
+plugins.register(DashboardPlugin)
+    
 
 class Dashboard(object):
     """
