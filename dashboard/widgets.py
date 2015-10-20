@@ -10,15 +10,13 @@ class Widget(object):
     cols = 'col-md-4'
     bg   = 'active'
 
-    @classmethod
-    def get_tagline(kls):
-        return kls.tagline
+    def get_tagline(self):
+        return self.tagline
 
-    @classmethod
-    def get_bg(kls):
-        return kls.bg
-    
-    
+    def get_bg(self):
+        return self.bg
+
+
 class Number(Widget):
     """
     A widget displaying a single number.
@@ -26,9 +24,8 @@ class Number(Widget):
     cols     = 'col-md-3'
     template = 'dashboard/widgets/number.html'
 
-    @classmethod
-    def get_number(kls):
-        return kls.number
+    def get_number(self):
+        return self.number
 
 
 class Histogram(Widget):
@@ -36,6 +33,45 @@ class Histogram(Widget):
     A histogram widget
     """
     cols = 'col-md-12'
+
+
+class Table(Widget):
+    """
+    A Basic Table
+    """
+    # assumes the existence in a list/tuple of headers called "table_headers" on the class
+    # assumes the existence of "table_data" on the class
+    # the data dictionary has the headers as keys
+    # it can also include links, these have {{ key__link }} as the name
+    # e.g. [
+    #    {"bananas": 2, "apples": 4, "apples__link": "http://news.bbc.co.uk"},
+    #    {"bananas": 4, "apples": 2, "apples__link": "stuff.com"}
+    #  ]
+    # ["bananas", "apples"]
+    # include index allows you to show the index, e.g. as a ranking
+    cols = 'col-md-12'
+    template = 'dashboard/widgets/table.html'
+    include_index = False
+
+    def get_include_index(self):
+        return self.include_index
+
+    def get_table_data(self):
+        return self.table_data
+
+    def table_iterator(self):
+        for row in self.get_table_data():
+            yield self.get_row(row)
+
+    def get_table_headers(self):
+        return self.table_headers
+
+    def get_row(self, dictionary):
+        """
+        returns an iterator that has a column value associated link if it exists
+        """
+        headers = self.get_table_headers()
+        return [(dictionary[h], dictionary.get("%s__link" % h),) for h in headers]
 
 
 class LineChart(Widget):
@@ -46,32 +82,30 @@ class LineChart(Widget):
     template = 'dashboard/widgets/line.html'
 
     @classmethod
-    def get(klass, name):
+    def get(cls, name):
         """
         Return a specific ward round by slug
         """
-        for sub in klass.__subclasses__():
+        for sub in cls.__subclasses__():
             if sub.slug == name:
                 return sub
-            
-    
+
+
 
 """
 Pre-baked usable widgets
 """
 class NumberOfUsers(Number):
     tagline = 'Users'
-    
-    @classmethod
-    def get_number(kls):
+
+    def get_number(self):
         from django.contrib.auth.models import User
         return User.objects.count()
 
 
 class NumberOfEpisodes(Number):
     tagline = 'Episodes'
-    
-    @classmethod
-    def get_number(kls):
+
+    def get_number(self):
         from opal.models import Episode
         return Episode.objects.count()

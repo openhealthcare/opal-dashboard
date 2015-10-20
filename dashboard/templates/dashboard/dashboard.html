@@ -27,15 +27,14 @@
               {{ dashboard.description }}
             </b>
           </p>
-        </div> 
+        </div>
 
       </div>
       <div class="row">
         {% for widget in dashboard.get_widgets %}
-          {% dashboard_widget widget %}      
+          {% dashboard_widget widget %}
         {% endfor %}
       </div>
     </div>
   </div>
 {% endblock %}
-

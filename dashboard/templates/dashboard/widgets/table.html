@@ -1,0 +1,36 @@
+<div class="panel-heading bg-{{ widget.get_bg }}">
+  <h3 class="text-center">{{ widget.get_tagline }}</h3>
+</div>
+<div class="panel-body">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        {% if widget.include_index %}
+        <th>#</th>
+        {% endif %}
+        {% for header in widget.get_table_headers %}
+        <th>
+            {{ header }}
+        </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in widget.table_iterator %}
+      <tr>
+        {% if widget.include_index %}
+        <td>{{ forloop.counter }}</td>
+        {% endif %}
+        {% for column_value, link in row %}
+          <td>
+            {% if link %}
+              <a href="{{ link }}">{{ column_value }}</a>
+            {% else %}
+              {{ column_value }}
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+  </table>
+</div>
