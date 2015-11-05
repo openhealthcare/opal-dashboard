@@ -16,7 +16,7 @@ def import_from_apps():
     """
     Iterate through installed apps attempting to import app.wardrounds
     This way we allow our implementation, or plugins, to define their
-    own ward rounds. 
+    own ward rounds.
     """
     print "Importing from apps"
     for app in settings.INSTALLED_APPS:
@@ -44,7 +44,7 @@ class DashboardPlugin(plugins.OpalPlugin):
     menuitems = [
         dict(
             href='/dashboards/', display="Dashboards", icon="fa fa-dashboard",
-            activepattern='/dashboards'
+            activepattern='/dashboards', index=3
         )
     ]
 
@@ -75,7 +75,7 @@ class DashboardPlugin(plugins.OpalPlugin):
         return {}
 
 plugins.register(DashboardPlugin)
-    
+
 
 class Dashboard(object):
     """
@@ -83,7 +83,7 @@ class Dashboard(object):
     """
     name        = None
     description = None
-    
+
     @classmethod
     def get(klass, name):
         """
@@ -91,11 +91,11 @@ class Dashboard(object):
         """
         if not IMPORTED_FROM_APPS:
             import_from_apps()
-            
+
         for sub in klass.__subclasses__():
             if sub.slug() == name:
                 return sub
-            
+
     @classmethod
     def list(klass):
         """
@@ -109,5 +109,3 @@ class Dashboard(object):
     @classmethod
     def slug(klass):
         return camelcase_to_underscore(klass.name).replace(' ', '')
-
-
