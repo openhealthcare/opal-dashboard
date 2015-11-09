@@ -17,11 +17,15 @@
     </thead>
     <tbody>
       {% for row in widget.table_iterator %}
+      {% if row.row_class %}
+      <tr class="{{ row.row_class }}">
+      {% else %}
       <tr>
+      {% endif %}
         {% if widget.include_index %}
         <td>{{ forloop.counter }}</td>
         {% endif %}
-        {% for column_value, link in row %}
+        {% for column_value, link in row.column_values %}
           <td>
             {% if link %}
               <a href="{{ link }}">{{ column_value }}</a>

@@ -52,6 +52,7 @@ class Table(Widget):
     cols = 'col-md-12'
     template = 'dashboard/widgets/table.html'
     include_index = False
+    row_class = "row_class"
 
     def get_include_index(self):
         return self.include_index
@@ -60,8 +61,7 @@ class Table(Widget):
         return self.table_data
 
     def table_iterator(self):
-        for row in self.get_table_data():
-            yield self.get_row(row)
+        return [self.get_row(i) for i in self.get_table_data()]
 
     def get_table_headers(self):
         return self.table_headers
@@ -71,7 +71,9 @@ class Table(Widget):
         returns an iterator that has a column value associated link if it exists
         """
         headers = self.get_table_headers()
-        return [(dictionary[h], dictionary.get("%s__link" % h),) for h in headers]
+        column_values = [(dictionary[h], dictionary.get("%s__link" % h),) for h in headers]
+        row_class = dictionary.get(self.row_class, None)
+        return dict(column_values=column_values, row_class=row_class)
 
 
 class LineChart(Widget):
