@@ -1,4 +1,4 @@
 Django==1.8.3
 -e git://github.com/openhealthcare/opal.git@v0.5.0#egg=opal
-dateutil
+python-dateutil
 mock
