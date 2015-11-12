@@ -7,6 +7,8 @@ module.exports = function(config){
         files: [
             //JASMINE,
             //JASMINE_ADAPTER,
+            //JASMINE,
+            //JASMINE_ADAPTER,
             'angular-1.2.20/angular.js',
             'angular-1.2.20/angular-route.js',
             'angular-1.2.20/angular-resource.js',
@@ -15,17 +17,17 @@ module.exports = function(config){
             'angular-ui-utils-0.1.0/ui-utils.js',
             'angular-ui-bootstrap-0.10.0/ui-bootstrap-tpls.js',
 
-            'angular-strap-2.0.3/modules/tooltip.js',
-            'angular-strap-2.0.3/modules/tooltip.tpl.js',
-            'angular-strap-2.0.3/modules/dimensions.js',
-            'angular-strap-2.0.3/modules/parse-options.js',
-            'angular-strap-2.0.3/modules/date-parser.js',
-            'angular-strap-2.0.3/modules/datepicker.js',
-            'angular-strap-2.0.3/modules/datepicker.tpl.js',
-            'angular-strap-2.0.3/modules/timepicker.js',
-            'angular-strap-2.0.3/modules/timepicker.tpl.js',
-            'angular-strap-2.0.3/modules/typeahead.js',
-            'angular-strap-2.0.3/modules/typeahead.tpl.js',
+            'angular-strap-2.3.1/modules/tooltip.js',
+            'angular-strap-2.3.1/modules/tooltip.tpl.js',
+            'angular-strap-2.3.1/modules/dimensions.js',
+            'angular-strap-2.3.1/modules/parse-options.js',
+            'angular-strap-2.3.1/modules/date-parser.js',
+            'angular-strap-2.3.1/modules/datepicker.js',
+            'angular-strap-2.3.1/modules/datepicker.tpl.js',
+            'angular-strap-2.3.1/modules/timepicker.js',
+            'angular-strap-2.3.1/modules/timepicker.tpl.js',
+            'angular-strap-2.3.1/modules/typeahead.js',
+            'angular-strap-2.3.1/modules/typeahead.tpl.js',
             'ngprogress-lite/ngprogress-lite.js',
             'jquery-1.11.0/jquery.js',
             'utils/underscore.js',
@@ -44,7 +46,6 @@ module.exports = function(config){
             __dirname+'/../dashboard/static/js/dashboard/*.js',
             __dirname+'/../dashboard/static/js/dashboard/controllers/*.js',
             __dirname+'/../dashboard/static/js/test/*.js',
-            
         ],
 
         // Stolen from http://oligofren.wordpress.com/2014/05/27/running-karma-tests-on-browserstack/
@@ -56,5 +57,3 @@ module.exports = function(config){
 
     })
 }
-
-
