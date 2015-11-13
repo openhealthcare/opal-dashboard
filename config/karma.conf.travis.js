@@ -14,9 +14,11 @@ module.exports = function(config){
             'angular-1.2.20/angular-resource.js',
             'angular-1.2.20/angular-cookies.js',
             'angular-1.2.20/angular-mocks.js',
+
             'angular-ui-utils-0.1.0/ui-utils.js',
             'angular-ui-bootstrap-0.10.0/ui-bootstrap-tpls.js',
-
+            'angular-strap-2.3.1/angular-strap.js',
+            'angular-strap-2.3.1/modules/compiler.js',
             'angular-strap-2.3.1/modules/tooltip.js',
             'angular-strap-2.3.1/modules/tooltip.tpl.js',
             'angular-strap-2.3.1/modules/dimensions.js',
@@ -28,6 +30,9 @@ module.exports = function(config){
             'angular-strap-2.3.1/modules/timepicker.tpl.js',
             'angular-strap-2.3.1/modules/typeahead.js',
             'angular-strap-2.3.1/modules/typeahead.tpl.js',
+            "angulartics-0.17.2/angulartics.min.js",
+            "angulartics-0.17.2/angulartics-ga.min.js",
+            'ngprogress-lite/ngprogress-lite.js',
             'ngprogress-lite/ngprogress-lite.js',
             'jquery-1.11.0/jquery.js',
             'utils/underscore.js',
