@@ -44,7 +44,7 @@ module.exports = function(config){
             'opal/controllers/*.js',
 
             __dirname+'/../dashboard/static/js/dashboard/*.js',
-            __dirname+'/../dashboard/static/js/dashboard/controllers/*.js',
+            // __dirname+'/../dashboard/static/js/dashboard/controllers/*.js',
             __dirname+'/../dashboard/static/js/test/*.js',
         ],
 
