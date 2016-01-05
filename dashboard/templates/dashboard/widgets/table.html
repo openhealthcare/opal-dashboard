@@ -10,7 +10,7 @@
         {% endif %}
         {% for header in widget.get_table_headers %}
         <th>
-            {{ header }}
+          {{ header }}
         </th>
         {% endfor %}
       </tr>
@@ -19,20 +19,24 @@
       {% for row in widget.table_iterator %}
       {% if row.row_class %}
       <tr class="{{ row.row_class }}">
-      {% else %}
+        {% else %}
       <tr>
-      {% endif %}
+        {% endif %}
         {% if widget.include_index %}
-        <td>{{ forloop.counter }}</td>
+        <td>
+          {% block rownumber %}
+          {% if row.number %}{{ row.number }}{% else %}{{ forloop.counter }}{% endif %}
+          {% endblock %}
+        </td>
         {% endif %}
         {% for column_value, link in row.column_values %}
-          <td>
-            {% if link %}
-              <a href="{{ link }}">{{ column_value }}</a>
-            {% else %}
-              {{ column_value }}
-            {% endif %}
-          </td>
+        <td>
+          {% if link %}
+          <a href="{{ link }}">{{ column_value }}</a>
+          {% else %}
+          {{ column_value }}
+          {% endif %}
+        </td>
         {% endfor %}
       </tr>
       {% endfor %}
