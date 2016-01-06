@@ -71,9 +71,10 @@ class Table(Widget):
         returns an iterator that has a column value associated link if it exists
         """
         headers = self.get_table_headers()
-        column_values = [(dictionary[h], dictionary.get("%s__link" % h),) for h in headers]
+        column_values = [(dictionary.get(h, ''), dictionary.get("%s__link" % h),) for h in headers]
         row_class = dictionary.get(self.row_class, None)
-        return dict(column_values=column_values, row_class=row_class)
+        number = dictionary.get('number', None)
+        return dict(column_values=column_values, row_class=row_class, number=number)
 
 
 class LineChart(Widget):
