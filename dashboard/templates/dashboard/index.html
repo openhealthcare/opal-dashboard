@@ -1,6 +1,6 @@
 {% extends 'opal.html' %}
 
-{% load opalplugins %}
+{% load plugins %}
 
 {% block ngapp %}opal.dashboard{% endblock %}
 {% block angularapp %}
@@ -32,16 +32,16 @@
                   <p>
                     {{ dashboard.description }}
                   </p>
-                </div> 
+                </div>
                 <div class="col-md-6">
                   <a href="/dashboards/{{ dashboard.slug }}" class="btn btn-primary btn-lg">
                     <i class="fa fa-dashboard"></i>
                     View
                   </a>
-                </div> 
-              </div> 
+                </div>
+              </div>
             </div>
-          </div>          
+          </div>
         </div>
         {% endfor %}
       </div>
