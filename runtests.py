@@ -1,16 +1,9 @@
 """
-Standalone test runner for Dashboards plugin
+Standalone test runner for the Dashboards plugin
 """
-import os
 import sys
 
 from django.conf import settings
-
-from opal.core import application
-
-class Application(application.OpalApplication):
-    schema_module = 'opal.tests.dummy_opal_application'
-
 
 settings.configure(DEBUG=True,
                    DATABASES={
@@ -18,11 +11,16 @@ settings.configure(DEBUG=True,
                            'ENGINE': 'django.db.backends.sqlite3',
                        }
                    },
-                   OPAL_OPTIONS_MODULE = 'dashboard.tests.dummy_options_module',
-                   ROOT_URLCONF='dashboard.urls',
+                   OPAL_OPTIONS_MODULE='dasboard.tests.dummy_options_module',
+                   ROOT_URLCONF='dasboard.urls',
+                   STATIC_URL='/assets/',
+                   STATIC_ROOT='static',
+                   STATICFILES_FINDERS=(
+                       'django.contrib.staticfiles.finders.FileSystemFinder',
+                       'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                       'compressor.finders.CompressorFinder',),
                    COMPRESS_ROOT='/tmp/',
-                   STATIC_URL = '/assets/',
-                   MIDDLEWARE_CLASSES = (
+                   MIDDLEWARE_CLASSES=(
                        'django.middleware.common.CommonMiddleware',
                        'django.contrib.sessions.middleware.SessionMiddleware',
                        'opal.middleware.AngularCSRFRename',
@@ -41,13 +39,21 @@ settings.configure(DEBUG=True,
                                    'compressor',
                                    'opal',
                                    'opal.tests',
-                                   'dashboard',),)
+                                   'dashboard',),
+                   MIGRATION_MODULES={
+                       'opal': 'opal.nomigrations'
+                   }
+)
+
+from opal.core import application
+class Application(application.OpalApplication):
+    pass
+
 
 from dashboard.tests import dummy_options_module
 
 import django
 django.setup()
-
 
 from django.test.runner import DiscoverRunner
 test_runner = DiscoverRunner(verbosity=1)
