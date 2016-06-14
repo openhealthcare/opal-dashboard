@@ -1,6 +1,9 @@
-// 
-// Main OPAL Dashboard application 
 //
+// Main OPAL Dashboard application
+//
+
+var opalshim = OPAL.module('opal', []);
+
 var services = OPAL.module('opal.dashboard.services', []);
 
 
@@ -24,10 +27,10 @@ OPAL.run(app);
 app.directive('lineChart', function($http){
     return function(scope, element, attrs){
         var el = element
-        
+
         $http.get('/dashboards/widgets/line-chart/' + attrs.lineChart).then(
             function(response){
-                
+
                 var ticks = response.data[0]
                 var tick_values = [
                     moment(ticks[1])._d,
@@ -36,7 +39,7 @@ app.directive('lineChart', function($http){
                 ]
 
                 console.log(tick_values)
-                
+
                 c3.generate({
                     bindto: el[0],
                     data: {
