@@ -1,3 +1,7 @@
+## 0.2.0 (Major Release)
+
+Requires OPAL 0.7.x or greater.
+
 ## 0.1.3 (Minor Release)
 
 Updates for compatability with OPAL 0.6.x
