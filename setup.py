@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='opal-dashboard',
-    version='v0.1.1',
+    version='v0.2.0',
     packages=['dashboard'],
     include_package_data=True,
     license='LICENSE',
