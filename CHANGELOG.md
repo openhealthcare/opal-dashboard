@@ -1,3 +1,7 @@
+## 0.1.3 (Minor Release)
+
+Updates for compatability with OPAL 0.6.x
+
 ## 0.1.2 (Minor Release)
 
 Add customisable numbering for table widgets.
