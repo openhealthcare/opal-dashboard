@@ -1,4 +1,4 @@
-Django==1.8.3
+Django==1.8.13
 -e git://github.com/openhealthcare/opal.git@v0.7.0#egg=opal
 mock
 pytz
