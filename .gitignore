@@ -14,3 +14,4 @@ bower_components
 *#
 *.#
 opal_dashboard.egg-info
+node_modules
