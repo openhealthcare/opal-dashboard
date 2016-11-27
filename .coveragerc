@@ -1,0 +1,10 @@
+[run]
+source =
+    dashboard
+omit =
+    dashboard/tests/*
+    */migrations/*
+
+[report]
+exclude_lines =
+    def __unicode__
