@@ -8,8 +8,10 @@ from dashboard import widgets
 class TestWidget(widgets.Widget):
     tagline = 'teh tagline'
 
-class TestNumberWidget(widgets.Widget):
+
+class TestNumberWidget(widgets.Number):
     number = 42
+
 
 class WidgetTestCase(OpalTestCase):
 
@@ -24,3 +26,10 @@ class NumberTestCase(OpalTestCase):
 
     def test_get_number(self):
         self.assertEqual(42, TestNumberWidget().get_number())
+
+
+class TableTestCase(OpalTestCase):
+
+
+    def test_get_include_index(self):
+        self.assertEqual(False, widgets.Table().get_include_index())
