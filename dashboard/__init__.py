@@ -18,13 +18,14 @@ def import_from_apps():
     This way we allow our implementation, or plugins, to define their
     own ward rounds.
     """
-    print "Importing from apps"
+    global IMPORTED_FROM_APPS
+    if IMPORTED_FROM_APPS:
+        return
     for app in settings.INSTALLED_APPS:
         try:
             stringport(app + '.dashboards')
         except ImportError:
             pass # not a problem
-    global IMPORTED_FROM_APPS
     IMPORTED_FROM_APPS = True
     return
 
@@ -48,32 +49,6 @@ class DashboardPlugin(plugins.OpalPlugin):
         )
     ]
 
-    def restricted_teams(self, user):
-        """
-        Return any restricted teams for particualr users that our
-        plugin may define.
-        """
-        return []
-
-    def list_schemas(self):
-        """
-        Return any patient list schemas that our plugin may define.
-        """
-        return {}
-
-    def flows(self):
-        """
-        Return any custom flows that our plugin may define
-        """
-        return {}
-
-    def roles(self, user):
-        """
-        Given a (Django) USER object, return any extra roles defined
-        by our plugin.
-        """
-        return {}
-
 plugins.register(DashboardPlugin)
 
 
@@ -89,8 +64,7 @@ class Dashboard(object):
         """
         Return a specific ward round by slug
         """
-        if not IMPORTED_FROM_APPS:
-            import_from_apps()
+        import_from_apps()
 
         for sub in klass.__subclasses__():
             if sub.slug() == name:
@@ -101,9 +75,7 @@ class Dashboard(object):
         """
         Return a list of all ward rounds
         """
-        if not IMPORTED_FROM_APPS:
-            import_from_apps()
-        print klass.__subclasses__()
+        import_from_apps()
         return klass.__subclasses__()
 
     @classmethod
