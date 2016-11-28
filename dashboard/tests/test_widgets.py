@@ -13,6 +13,10 @@ class TestNumberWidget(widgets.Number):
     number = 42
 
 
+class TestLineChart(widgets.LineChart):
+    slug = 'tester'
+
+
 class WidgetTestCase(OpalTestCase):
 
     def test_get_tagline(self):
@@ -30,6 +34,23 @@ class NumberTestCase(OpalTestCase):
 
 class TableTestCase(OpalTestCase):
 
-
     def test_get_include_index(self):
         self.assertEqual(False, widgets.Table().get_include_index())
+
+
+class LineChartTestCase(OpalTestCase):
+
+    def test_get(self):
+        self.assertEqual(TestLineChart, widgets.LineChart.get('tester'))
+
+
+class NumberOfUsersTestCase(OpalTestCase):
+
+    def test_get_number(self):
+        self.assertEqual(0, widgets.NumberOfUsers().get_number())
+
+
+class NumberOfEpisodesTestCase(OpalTestCase):
+
+    def test_get_number(self):
+        self.assertEqual(0, widgets.NumberOfEpisodes().get_number())
