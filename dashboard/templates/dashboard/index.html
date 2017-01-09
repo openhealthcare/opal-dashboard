@@ -24,7 +24,7 @@
         <div class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3>{{ dashboard.name }}</h3>
+              <h3>{{ dashboard.display_name }}</h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -34,7 +34,7 @@
                   </p>
                 </div>
                 <div class="col-md-6">
-                  <a href="/dashboards/{{ dashboard.slug }}" class="btn btn-primary btn-lg">
+                  <a href="/dashboards/{{ dashboard.get_slug }}" class="btn btn-primary btn-lg">
                     <i class="fa fa-dashboard"></i>
                     View
                   </a>

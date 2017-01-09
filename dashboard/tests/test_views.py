@@ -18,4 +18,4 @@ class DashboardIndexViewTestCase(OpalTestCase):
     def test_get_context_data(self):
         view = self.setup_view(views.DashboardIndexView)
         ctx = view.get_context_data()
-        self.assertEqual([TestDash], ctx['dashboards'])
+        self.assertEqual([TestDash], list(ctx['dashboards']))
