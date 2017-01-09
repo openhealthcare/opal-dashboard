@@ -37,6 +37,31 @@ class TableTestCase(OpalTestCase):
     def test_get_include_index(self):
         self.assertEqual(False, widgets.Table().get_include_index())
 
+    def test_get_table_data(self):
+        class MyTable(widgets.Table):
+            table_data = []
+
+        self.assertEqual([], MyTable().get_table_data())
+
+    def test_table_iterator(self):
+        class MyTable(widgets.Table):
+            table_data = []
+
+        self.assertEqual([], MyTable().table_iterator())
+
+    def test_get_table_headers(self):
+        class MyTable(widgets.Table):
+            table_headers = []
+
+        self.assertEqual([], MyTable().get_table_headers())
+
+    def test_get_row(self):
+        class MyTable(widgets.Table):
+            table_headers = {}
+
+        self.assertEqual({'column_values': [], 'number': None, 'row_class': None},
+                         MyTable().get_row({}))
+
 
 class LineChartTestCase(OpalTestCase):
 
