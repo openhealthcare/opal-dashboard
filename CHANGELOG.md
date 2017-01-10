@@ -2,6 +2,9 @@
 
 Requires OPAL 0.8.x or greater.
 
+Updates dashboards to be DiscoverableFeatures. This requires updating your dashboard
+`name` property to `display_name`.
+
 ## 0.2.0 (Major Release)
 
 Requires OPAL 0.7.x or greater.

@@ -6,7 +6,7 @@ from opal.core.test import OpalTestCase
 import dashboard
 
 class TestDash(dashboard.Dashboard):
-    name = 'The Name'
+    display_name = 'The Name'
 
 class DashboardTestCase(OpalTestCase):
 
@@ -14,8 +14,8 @@ class DashboardTestCase(OpalTestCase):
         self.assertEqual(TestDash, dashboard.Dashboard.get('the_name'))
 
     def test_list(self):
-        dashes = dashboard.Dashboard.list()
+        dashes = list(dashboard.Dashboard.list())
         self.assertEqual([TestDash], dashes)
 
     def test_slug(self):
-        self.assertEqual('the_name', TestDash.slug())
+        self.assertEqual('the_name', TestDash.get_slug())
