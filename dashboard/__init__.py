@@ -1,13 +1,8 @@
-"""
-Plugin definition for the dashboard OPAL plugin
-"""
 from django.conf import settings
 
-from opal.core import plugins
 from opal.utils import stringport, camelcase_to_underscore
 
-import dashboard.widgets as widgets
-from dashboard.urls import urlpatterns
+from dashboard import plugin # Don't do this once we've updated plugins in Opal
 
 # So we only do it once
 IMPORTED_FROM_APPS = False
@@ -28,29 +23,6 @@ def import_from_apps():
             pass # not a problem
     IMPORTED_FROM_APPS = True
     return
-
-class DashboardPlugin(plugins.OpalPlugin):
-    """
-    Main entrypoint to expose this plugin to our OPAL application.
-    """
-    urls = urlpatterns
-    javascripts = {
-        # Add your javascripts here!
-        'opal.dashboard': [
-            'js/dashboard/app.js',
-            # 'js/dashboard/controllers/larry.js',
-            # 'js/dashboard/services/larry.js',
-        ]
-    }
-    menuitems = [
-        dict(
-            href='/dashboards/', display="Dashboards", icon="fa fa-dashboard",
-            activepattern='/dashboards', index=3
-        )
-    ]
-
-plugins.register(DashboardPlugin)
-
 
 class Dashboard(object):
     """
