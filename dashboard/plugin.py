@@ -25,5 +25,3 @@ class DashboardPlugin(plugins.OpalPlugin):
             activepattern='/dashboards', index=3
         )
     ]
-
-plugins.register(DashboardPlugin)
