@@ -3,7 +3,7 @@ Views for the dashboard OPAL Plugin
 """
 from django.views.generic import View, TemplateView
 
-from opal.core.views import LoginRequiredMixin, _build_json_response
+from opal.core.views import LoginRequiredMixin, json_response
 
 class DashboardIndexView(LoginRequiredMixin, TemplateView):
     """
@@ -44,4 +44,4 @@ class LineChartDataView(LoginRequiredMixin, View):
         from dashboard.widgets import LineChart
 
         widget = LineChart.get(kwargs['name'])
-        return _build_json_response(widget().get_lines())
+        return json_response(widget().get_lines())
