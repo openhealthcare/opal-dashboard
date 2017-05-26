@@ -1,7 +1,7 @@
 """
-Plugin definition for the dashboard OPAL plugin
+Plugin definition for the dashboard Opal plugin
 """
-from opal.core import plugins
+from opal.core import plugins, menus
 
 from dashboard.urls import urlpatterns
 
@@ -20,7 +20,7 @@ class DashboardPlugin(plugins.OpalPlugin):
         ]
     }
     menuitems = [
-        dict(
+        menus.MenuItem(
             href='/dashboards/', display="Dashboards", icon="fa fa-dashboard",
             activepattern='/dashboards', index=3
         )
