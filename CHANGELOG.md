@@ -1,3 +1,7 @@
+## 0.5.0 (Major Release)
+
+Requires Opal 0.10.0 or greater
+
 ## 0.4.0 (Major Release)
 
 Requires Opal 0.9.0 or greater
