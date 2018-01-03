@@ -1,6 +1,6 @@
 This is dashboard - an [OPAL](https://github.com/openhealthcare/opal) plugin.
 
-[![Build Status](https://travis-ci.org/openhealthcare/opal-dashboard.svg)](https://travis-ci.org/openhealthcare/opal-dashboard)
+[![Build Status](https://travis-ci.org/openhealthcare/opal-dashboard.svg?branch=v0.5.0)](https://travis-ci.org/openhealthcare/opal-dashboard)
 [![Coverage Status](https://coveralls.io/repos/github/openhealthcare/opal-dashboard/badge.svg)](https://coveralls.io/github/openhealthcare/opal-dashboard)
 
 
